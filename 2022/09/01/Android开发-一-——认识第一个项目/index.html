@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="认识第一个Android项目       Android开发首先需要了解项目的结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发(一)——认识第一个项目">
+<meta property="og:url" content="http://zhazhazhi7.github.io/2022/09/01/Android%E5%BC%80%E5%8F%91-%E4%B8%80-%E2%80%94%E2%80%94%E8%AE%A4%E8%AF%86%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="时光里山南水北，你我间人山人海。">
+<meta property="og:description" content="认识第一个Android项目       Android开发首先需要了解项目的结构">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-01T12:04:49.000Z">
+<meta property="article:modified_time" content="2022-09-01T12:07:13.483Z">
+<meta property="article:author" content="Zhazhazhi7">
+<meta name="twitter:card" content="summary"><title>Android开发(一)——认识第一个项目 | 时光里山南水北，你我间人山人海。</title><link ref="canonical" href="http://zhazhazhi7.github.io/2022/09/01/Android%E5%BC%80%E5%8F%91-%E4%B8%80-%E2%80%94%E2%80%94%E8%AE%A4%E8%AF%86%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.1.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">时光里山南水北，你我间人山人海。</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Android开发(一)——认识第一个项目</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-09-01</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-09-01</span></span></div></header><div class="post-body">
+        <h1 id="认识第一个Android项目"   >
+          <a href="#认识第一个Android项目" class="heading-link"><i class="fas fa-link"></i></a><a href="#认识第一个Android项目" class="headerlink" title="认识第一个Android项目"></a>认识第一个Android项目</h1>
+      <p>Android开发首先需要了解项目的结构</p>
+<span id="more"></span>
+
+
+        <h2 id="文件组成"   >
+          <a href="#文件组成" class="heading-link"><i class="fas fa-link"></i></a><a href="#文件组成" class="headerlink" title="文件组成"></a>文件组成</h2>
+      <ol>
+<li><p>.gradle和.idea</p>
+<p>这两个目录下是android studio自动生成的一些文件，我们无须关心，也不要手动编辑</p>
+</li>
+<li><p><strong>app</strong></p>
+<p>项目中的代码、资源等内容几乎都是放置在这个目录下的，我们后面的开发工作也基本在这个目录下进行的</p>
+</li>
+<li><p>build</p>
+<p>这个目录无需关心，主要包含了一些编译时会自动生成的文件</p>
+</li>
+<li><p>gradle</p>
+<p>目录包含了gradle wrapper的配置文件，使用gradle wrapper的方式不需要提前将gradle下载，如需启用gradle wrapper，可以在File -&gt; Settings -&gt; Build,Execution ,</p>
+<p>Deployment -&gt; Gradle</p>
+</li>
+<li><p><strong>.gitignore</strong></p>
+<p>这个文件是用来指定的目录或者文件排除在版本控制之外的</p>
+</li>
+<li><p><strong>build.gradle</strong></p>
+<p>这是项目全局的gradle构建脚本，通常这个文件的内容不需要修改。</p>
+</li>
+<li><p>gradle.properties</p>
+<p>这个是全局的gradle配置文件，在这里配置的属性将会影响到项目中的所有gradle编译脚本。</p>
+</li>
+<li><p>gradlew 和 gradlew.bat</p>
+<p>这两个文件是用来命令行界面中执行的gradle命令的，其中gradlew是在linux或者Mac系统中使用的，gradlew.bat是在windows中使用的</p>
+</li>
+<li><p>HelloWorld.iml</p>
+<p>iml文件是所有IDEA项目都会自动生成的文件，不需要修改</p>
+</li>
+<li><p>local.properties</p>
+<p>这个文件用于指定本机的SDK路径，通常都是自动生成的，我们并不需要修改。</p>
+</li>
+<li><p>settings.gradle</p>
+<p>这个文件用于指定项目中的所有引入模块。通常情况的模块引入都是自动完成的，需要我们手动引入的情况较少</p>
+</li>
+</ol>
+
+        <h2 id="app文件组成"   >
+          <a href="#app文件组成" class="heading-link"><i class="fas fa-link"></i></a><a href="#app文件组成" class="headerlink" title="app文件组成"></a>app文件组成</h2>
+      <ol>
+<li><p>build</p>
+<p>这个目录与外层的build类似，主要是包含了一些在编译时自动生成的文件，不过文件内容会更加的复杂</p>
+</li>
+<li><p>libs</p>
+<p>如果项目引入了第三方jar包，就需要把这些jar包都放在libs目录下，放在这个目录下的jar包都会被添加进去</p>
+</li>
+<li><p>androidTest</p>
+<p>此处用来编写Android Test 测试用例，可以对项目进行一些自动化测试</p>
+</li>
+<li><p><strong>java</strong></p>
+<p>放置我们所有java代码的地方</p>
+</li>
+<li><p>res</p>
+<p>所有用到的图片、布局、字符串等资源都要放在这个目录下。</p>
+</li>
+<li><p>AndroidMainifest</p>
+<p>整个Android项目的配置文件，程序中定义的四大组件都需要在这个文件里注册，另外还需要在这个文件中添加权限申明。</p>
+</li>
+<li><p>test</p>
+<p>用来编写Unit Test 测试用例，是对项目自动化测试的另一种方式</p>
+</li>
+<li><p>.gitignore</p>
+<p>用于将指定的目录或者文件排除在版本控制之外，作用与外部的.gitignore相似</p>
+</li>
+<li><p>app.iml</p>
+<p>IDEA项目自动生成的文件，我们不关心或者修改这个文件中的内容。</p>
+</li>
+<li><p>build.gradle</p>
+<p>这是项目全局的gradle构建脚本，这个文件有许多的项目相关配置。</p>
+</li>
+<li><p>proguard-rules.pro</p>
+<p>这个文件用于指定项目代码的混淆规则，当代码开发完成后打成包装文件，如果不希望代码被人破解，通常会将代码进行混淆，从而让破解者难以阅读。</p>
+</li>
+</ol>
+
+        <h2 id="项目中的资源"   >
+          <a href="#项目中的资源" class="heading-link"><i class="fas fa-link"></i></a><a href="#项目中的资源" class="headerlink" title="项目中的资源"></a>项目中的资源</h2>
+      <p>展开res文件，有主要几种文件</p>
+<p><strong>drawable</strong>开头的文件夹都是用来放图片的</p>
+<p><strong>mipmap</strong>开头的文件都是用来放应用图标的</p>
+<p><strong>values</strong>开头的文件夹都是用来放字符串、样式、颜色等配置的</p>
+<p><strong>layout</strong>开头的文件夹都是用来存放布局文件的</p>
+<p>引用方式(以res&#x2F;values&#x2F;strings.xml中引用app_name为例)：</p>
+<ul>
+<li>在代码中通过R.string.app_name</li>
+<li>在XML中通过@string&#x2F;app_name</li>
+</ul>
+
+        <h2 id="详解build-gradle文件"   >
+          <a href="#详解build-gradle文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#详解build-gradle文件" class="headerlink" title="详解build.gradle文件"></a>详解build.gradle文件</h2>
+      <p>不同于escplise，IDEA是采用Gradle来构建项目的。它基于特定的语言（DSL）来申明项目配置，摒弃了传统的XML（如Ant和Maven）的各种繁琐配置</p>
+<ul>
+<li><strong>最外层</strong>的目录下的bulid.gradle文件代码如下：</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">&quot;com.android.tools.build:gradle:7.0.2&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></span><br><span class="line">        <span class="comment">// in the individual module build.gradle files</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>dependencies 闭包中使用classpath申明了一个Gradle插件。Java、C++等很多项目都可以用Gradle来构建，我们需要用它来构建Android项目则需要申明com.android.tools.build:gradle:7.0.2这个插件，后面部分时插件版本号</p>
+<ul>
+<li><strong>app</strong>目录下的build.gradle文件代码如下：</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">&#x27;com.android.application&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdk <span class="number">30</span></span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">&quot;com.example.apptest&quot;</span></span><br><span class="line">        minSdk <span class="number">21</span></span><br><span class="line">        targetSdk <span class="number">30</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">&quot;1.0&quot;</span></span><br><span class="line"></span><br><span class="line">        testInstrumentationRunner <span class="string">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles <span class="title function_">getDefaultProguardFile</span><span class="params">(<span class="string">&#x27;proguard-android-optimize.txt&#x27;</span>)</span>, <span class="string">&#x27;proguard-rules.pro&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        sourceCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">        targetCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    implementation <span class="string">&#x27;androidx.appcompat:appcompat:1.2.0&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.google.android.material:material:1.3.0&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;androidx.constraintlayout:constraintlayout:2.0.4&#x27;</span></span><br><span class="line">    testImplementation <span class="string">&#x27;junit:junit:4.+&#x27;</span></span><br><span class="line">    androidTestImplementation <span class="string">&#x27;androidx.test.ext:junit:1.1.2&#x27;</span></span><br><span class="line">    androidTestImplementation <span class="string">&#x27;androidx.test.espresso:espresso-core:3.3.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="android的日志工具Log"   >
+          <a href="#android的日志工具Log" class="heading-link"><i class="fas fa-link"></i></a><a href="#android的日志工具Log" class="headerlink" title="android的日志工具Log"></a>android的日志工具Log</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">日志五种级别：</span><br><span class="line">Log.v()    Verbose <span class="comment">//最琐碎的、意义最小的日志信息。对应级别最低的一种</span></span><br><span class="line">    </span><br><span class="line">Log.d()    Debug <span class="comment">//打印调试信息</span></span><br><span class="line">    </span><br><span class="line">Log.i()    Info<span class="comment">//打印比较重要的数据</span></span><br><span class="line">    </span><br><span class="line">Log.w()    Warn<span class="comment">//用于打印一些警告信息</span></span><br><span class="line">    </span><br><span class="line">Log.e()    Error<span class="comment">//用于打印程序中的错误信息</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>为什么用Log不用System.out.println</strong></p>
+<p>System.out.println()的缺点：</p>
+<p>​    日志打印不可控制、打印时间无法确定、不能添加过滤器、没有日志级别之分…</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://zhazhazhi7.github.io">Zhazhazhi7</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://zhazhazhi7.github.io/2022/09/01/Android%E5%BC%80%E5%8F%91-%E4%B8%80-%E2%80%94%E2%80%94%E8%AE%A4%E8%AF%86%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/">http://zhazhazhi7.github.io/2022/09/01/Android%E5%BC%80%E5%8F%91-%E4%B8%80-%E2%80%94%E2%80%94%E8%AE%A4%E8%AF%86%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/09/01/Android%E5%BC%80%E5%8F%91-%E4%BA%8C-%E2%80%94%E2%80%94%E6%B4%BB%E5%8A%A8/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Android开发(二)——活动</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/08/20/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/"><span class="paginator-prev__text">线索二叉树</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E7%AC%AC%E4%B8%80%E4%B8%AAAndroid%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">
+          认识第一个Android项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BB%84%E6%88%90"><span class="toc-number">1.1.</span> <span class="toc-text">
+          文件组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app%E6%96%87%E4%BB%B6%E7%BB%84%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">
+          app文件组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E8%B5%84%E6%BA%90"><span class="toc-number">1.3.</span> <span class="toc-text">
+          项目中的资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3build-gradle%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">
+          详解build.gradle文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android%E7%9A%84%E6%97%A5%E5%BF%97%E5%B7%A5%E5%85%B7Log"><span class="toc-number">1.5.</span> <span class="toc-text">
+          android的日志工具Log</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/guo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">zhazhazhi7's blog</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">17</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Zhazhazhi7</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.1.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
