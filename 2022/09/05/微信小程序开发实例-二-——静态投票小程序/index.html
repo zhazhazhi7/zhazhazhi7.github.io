@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="开发投票程序的首页                           小程序的初始配置       ​    为了小程序能够运行起来，需要在app.js中加入注册小程序的逻辑。内容如下： 12345APP(&amp;#123;    onLauch()&amp;#123;        &#x2F;&#x2F; 小程序的生命周期函数onlaunch，小程序启动时会调用它。    &amp;#125;&amp;#125;)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发实例(二)——静态投票小程序">
+<meta property="og:url" content="http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%BA%8C-%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E6%8A%95%E7%A5%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="时光里山南水北，你我间人山人海。">
+<meta property="og:description" content="开发投票程序的首页                           小程序的初始配置       ​    为了小程序能够运行起来，需要在app.js中加入注册小程序的逻辑。内容如下： 12345APP(&amp;#123;    onLauch()&amp;#123;        &#x2F;&#x2F; 小程序的生命周期函数onlaunch，小程序启动时会调用它。    &amp;#125;&amp;#125;)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-05T15:10:15.000Z">
+<meta property="article:modified_time" content="2022-09-05T15:14:34.190Z">
+<meta property="article:author" content="Zhazhazhi7">
+<meta name="twitter:card" content="summary"><title>微信小程序开发实例(二)——静态投票小程序 | 时光里山南水北，你我间人山人海。</title><link ref="canonical" href="http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%BA%8C-%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E6%8A%95%E7%A5%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.1.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">时光里山南水北，你我间人山人海。</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">微信小程序开发实例(二)——静态投票小程序</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-09-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-09-05</span></span></div></header><div class="post-body">
+        <h1 id="开发投票程序的首页"   >
+          <a href="#开发投票程序的首页" class="heading-link"><i class="fas fa-link"></i></a><a href="#开发投票程序的首页" class="headerlink" title="开发投票程序的首页"></a>开发投票程序的首页</h1>
+      
+        <h2 id="小程序的初始配置"   >
+          <a href="#小程序的初始配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#小程序的初始配置" class="headerlink" title="小程序的初始配置"></a>小程序的初始配置</h2>
+      <p>​    为了小程序能够运行起来，需要在app.js中加入注册小程序的逻辑。内容如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">APP(&#123;</span><br><span class="line">    onLauch()&#123;</span><br><span class="line">        <span class="comment">// 小程序的生命周期函数onlaunch，小程序启动时会调用它。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+
+<p>​    在app.json中需要设置小程序的页面路径。内容如下：</p>
+<span id="more"></span>
+
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;pages&quot;</span>:[</span><br><span class="line">        <span class="string">&quot;pages/index/index&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>​    在pages&#x2F;index&#x2F;index.js中加入页面的注册逻辑。内容如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">    onLoad()&#123;</span><br><span class="line">        <span class="comment">//页面生命周期函数onLoad,进入页面时会调用它</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+
+<p>​    在pages&#x2F;index&#x2F;index.json中加入一个空的配置。内容如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>​    加入了以上代码后，小程序就有了一个页面，并且可以在模拟器中正常运行起来了。现在这个小程序还没有任何内容，可以在pages&#x2F;index&#x2F;index.wxml中为它先增加一个view组件，作为最外层的视图内容组件。代码如下：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;! -- 一般每一个页面的最外层都用一个view组件包装起来-- &gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>​    接下来对小程序的页面进行一些配置。在app.json中加入小程序导航栏的设置。修改后内容如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;pages&quot;</span>:[</span><br><span class="line">        <span class="string">&quot;pages/index/index&quot;</span> 	<span class="comment">//指定小程序首页的页面路径</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;window&quot;</span>:&#123;</span><br><span class="line">    <span class="string">&quot;backgroundTextStyle&quot;</span>:<span class="string">&quot;light&quot;</span>, <span class="comment">// 全局指定下</span></span><br><span class="line">    <span class="string">&quot;navigationBarBackgroundColor&quot;</span>: <span class="string">&quot;#fff&quot;</span>,</span><br><span class="line">    <span class="string">&quot;navigationBarTitleText&quot;</span>: <span class="string">&quot;投票小程序&quot;</span>,</span><br><span class="line">    <span class="string">&quot;navigationBarTextStyle&quot;</span>:<span class="string">&quot;black&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>注：JSON文件中实际上不支持加入注释</strong></p>
+<p>​    在app.wxss中加入小程序的全局样式，内容如下：</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">page&#123;</span><br><span class="line">    <span class="comment">/* 设置page高度为100%*/</span></span><br><span class="line">    <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="comment">/*一般会把每个页面的最外层view组件的class设置为container,</span></span><br><span class="line"><span class="comment">    	在这里把高度设置为100%,表示占满整个页面</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>​    这个页面暂时什么都没有，但是我们可以修改index.json文件的内容，单独指定首页的导航栏的内容。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;usingComponents&quot;</span>: &#123;&#125;,</span><br><span class="line">  <span class="string">&quot;navigationBarTitleText&quot;</span>: <span class="string">&quot;投票小程序-首页&quot;</span> <span class="comment">//导航栏的文字内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="开发初始页面布局"   >
+          <a href="#开发初始页面布局" class="heading-link"><i class="fas fa-link"></i></a><a href="#开发初始页面布局" class="headerlink" title="开发初始页面布局"></a>开发初始页面布局</h2>
+      <p>​    接下来要在首页添加内容。首页中加入按钮：</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>单选投票<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>多选投票<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    一般每个页面的最外层都用一个view组件包装起来，并且这个view组件的class被设置为</p>
+<p>container。这样组件就会使用app.wxss中设置好的样式高度设置为100%，占满整个屏幕。</p>
+<p>​    在页面单独的wxss中，如果为container这个class设置样式，那么在页面中class为container的view 组件就会加入页面的特有样式,其他页面的container则不会受到影响。这里在pages&#x2F;index&#x2F;index.wxss中添加页面样式，将页面美化。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;<span class="comment">/*使用flex布局*/</span></span><br><span class="line">  <span class="attribute">flex-direction</span>: column;<span class="comment">/*设置布局方向为纵向*/</span></span><br><span class="line">  <span class="attribute">justify-content</span>: center;<span class="comment">/*在布局方向上居中*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.btn</span>&#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20</span>rpx;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10</span>rpx;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1</span>rpx solid <span class="number">#26ab28</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">20</span>rpx;</span><br><span class="line">  <span class="attribute">text-align</span>:center;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#26ab28</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="使用image图片组件"   >
+          <a href="#使用image图片组件" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用image图片组件" class="headerlink" title="使用image图片组件"></a>使用image图片组件</h2>
+      <p>​    我们可以增加image组件插入一些图片来丰富图片内容。image组件通常不包含内容，因此使用单标签的形式，代码如下：</p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span> /&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    image组件有三个常用的属性：src、mode和lazy-load。<strong>其中src指定图文件的路径，mode指定图片的显示模式，两个属性都是string类型。lazy-load是boolean类型的属性，默认为false，如果设置为true就会开启懒加载模式</strong></p>
+<p>​    使用image组件时，一般会在样式文件中指定特定的大小，这样image组件的大小就会和原始的图片不一样，需要进行缩放或者裁剪。mode属性就是用来指定图片如何缩放或者</p>
+<p>裁剪的属性。mode属性的显示模式一共13种，其中4种是缩放模式，9种是裁剪模式，它们的取值和效果说明如下：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>模式类型</th>
+<th>值</th>
+<th>说 明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>缩放</td>
+<td>scaleToFill</td>
+<td>不保持纵横比放缩图片，使图片的宽高能完全拉伸至填满image元素</td>
+</tr>
+<tr>
+<td>缩放</td>
+<td>aspectFit</td>
+<td>保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说可以完整的将图片显示出来</td>
+</tr>
+<tr>
+<td>缩放</td>
+<td>aspectFill</td>
+<td>保持纵横比缩放图片，只保证图片的短边能完整显示出来，也就是说图片通常只在水平或者垂直方向是完整的，另一个方向将会将会法神截取</td>
+</tr>
+<tr>
+<td>缩放</td>
+<td>widthFix</td>
+<td>宽度不变，高度自动变化，保持原图的宽高比不变</td>
+</tr>
+</tbody></table></div>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>模式类型</th>
+<th>值</th>
+<th>说 明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>裁剪</td>
+<td>top</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的顶部区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>bottom</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的底部区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>center</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的中间区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>left</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的左边区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>right</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的右边区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>top left</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的左上边区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>top right</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的右下边区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>bottom left</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的左下边区域</td>
+</tr>
+<tr>
+<td>裁剪</td>
+<td>bottom right</td>
+<td>保持原始图片的大小，如果超出image区域，只显示图片的右下边区域</td>
+</tr>
+</tbody></table></div>
+<p>​    在项目新建一个imgs目录，用来放置需要的图片文件，</p>
+<p>​    有了图片文件，就可以在WXML文件中加入image组件了。代码如下：</p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span> = <span class="string">&quot;btn&quot;</span> <span class="attr">bindtap</span>=<span class="string">&quot;onTapCreateRadioVote&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">&quot;btn-img&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/pages/imgs/单选选中.png&quot;</span> <span class="attr">mode</span>=<span class="string">&quot;widthFix&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span> = <span class="string">&quot;btn-text&quot;</span>&gt;</span>单选投票<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    接下来还需要修改pages&#x2F;index&#x2F;index.wxss文件中的内容，为图片组件增加样式。wxss文件中新增的代码如下：</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn</span>&#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20</span>rpx;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10</span>rpx;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1</span>rpx solid <span class="number">#26ab28</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">20</span>rpx;</span><br><span class="line">  <span class="attribute">text-align</span>:center;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#26ab28</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.btn-img</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50</span>rpx;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">30</span>rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>​    加入了image组件的首页就比刚才更好了一些。</p>
+
+        <h2 id="使用text文本文件"   >
+          <a href="#使用text文本文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用text文本文件" class="headerlink" title="使用text文本文件"></a>使用text文本文件</h2>
+      <p>​    在首页的wxml代码中，按钮上面的“单选投票”和“多选投票”文字是直接包含在class为btn的view组件中的。如果想要修改文字样式，这个例子中就可以对btn添加样式设置。当前view组件中有多段文字时，如果只想修改文字的样式，在这个例子中就可以对btn添加样式设置。当前view组件有多段文字时，如果只想修改其中一段文字的样式，那么就需要在这段文字的外面再包含一个组件，通常使用text组件包装文字内容。以“单选投票”按钮为例，代码如下：</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span> = <span class="string">&quot;btn&quot;</span> <span class="attr">bindtap</span>=<span class="string">&quot;onTapCreateRadioVote&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">&quot;btn-img&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/pages/imgs/单选选中.png&quot;</span> <span class="attr">mode</span>=<span class="string">&quot;widthFix&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span> = <span class="string">&quot;btn-text&quot;</span>&gt;</span>单选投票<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span> = <span class="string">&quot;btn-desc&quot;</span>&gt;</span>创建一个单选投票<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    这样就可以在wxss文件中为btn-txt和btn-desc分别添加样式了，加入如下代码：</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn-desc</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">10pt</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">25</span>rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h1 id="开发创建页面"   >
+          <a href="#开发创建页面" class="heading-link"><i class="fas fa-link"></i></a><a href="#开发创建页面" class="headerlink" title="开发创建页面"></a>开发创建页面</h1>
+      <p>​    创建的投票页面一共两个：一个是创建单选投票的页面；另一个是创建多选投票的页面。本节中，我们先来实现创建单选投票的页面，然后创建多选投票的页面。</p>
+<p>​    用户在创建投票的页面中填写投票内容，然后单击“提交”按钮将它保存。通常这类让用户填写信息的并提交的页面称为“表单页面”。表单中的主要包括输入框，选择器和开关组件，这类让用户填写内容的组件被称为“表单组件”。</p>
+
+        <h2 id="创建小程序的第二个页面"   >
+          <a href="#创建小程序的第二个页面" class="heading-link"><i class="fas fa-link"></i></a><a href="#创建小程序的第二个页面" class="headerlink" title="创建小程序的第二个页面"></a>创建小程序的第二个页面</h2>
+      <p>​    开发一个新的页面前需要先在项目中创建相关的文件。首先在app.json文件的pages属性中申明第二个页面。代码如下：</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;pages&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;pages/index/index&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;pages/createVote/createVote&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    保存后，微信开发者工具会自动创建出这个页面的四个文件</p>
+<p>​    修改createVote.json文件，将这个页面的标题设置为“创建单选投票”。代码如下：</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;usingComponents&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;navigationBarTitleText&quot;</span><span class="punctuation">:</span> <span class="string">&quot;创建投票&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    现在小程序项目中已经有了两个页面，但是两个页面之间还不能互相跳转，所以在模拟器中看不到第二个页面的展示效果。在pages&#x2F;index&#x2F;index.js文件中增加一个onTapCreateRadioVote函数，作为小程序中首页中单击“创建单选投票”按钮的事件处理函数。代码如下：</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Page(<span class="punctuation">&#123;</span></span><br><span class="line">    onLoad()<span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">//页面生命周期的函数onLoad,进入页面时会调用它</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    onTapCreateRadioVote()<span class="punctuation">&#123;</span></span><br><span class="line">        wx.navigateTo(<span class="punctuation">&#123;</span></span><br><span class="line">            url<span class="punctuation">:</span>&#x27;/pages/createVote/createRadioVote&#x27;</span><br><span class="line">        <span class="punctuation">&#125;</span>)</span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">)</span><br></pre></td></tr></table></div></figure>
+
+<p>​    尽管目前还没有将小程序的API，但是这个函数易于理解，它可以让小程序跳转到createRadioVote页面。接下来，在pages&#x2F;index&#x2F;index.wxml文件中将这个函数绑定到“创建单选投票按钮上。代码如下：</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span> = <span class="string">&quot;btn&quot;</span> <span class="attr">bindtap</span>=<span class="string">&quot;onTapCreateMultiChoiceVote&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">image</span> <span class="attr">class</span>=<span class="string">&quot;btn-img&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/pages/imgs/多选.png&quot;</span> <span class="attr">mode</span>=<span class="string">&quot;widthFix&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span> = <span class="string">&quot;btn-text&quot;</span>&gt;</span>多选投票<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span> = <span class="string">&quot;btn-desc&quot;</span>&gt;</span>创建一个多选投票<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    这段代码为view组件增加上了一个bindtap属性。bindtap属性的value对应着页面JS文件中的函数名，它将这个函数作为单击（tap）事件的监听函数绑定（bind）到组件上，当小程序监听到用户单击该组件时，就会立刻调用被绑定的函数。这样一来，只需要单击首页中的”创建单选投票”按钮就可以跳转到该页面查看页面效果.</p>
+<p>​    <strong>注:因为页面中的大部分组件都可以被用户单击,因此bindtap是一个很通用的属性,可以应用到几乎所有组件上</strong></p>
+
+        <h3 id="修改模拟器中的启动页面"   >
+          <a href="#修改模拟器中的启动页面" class="heading-link"><i class="fas fa-link"></i></a><a href="#修改模拟器中的启动页面" class="headerlink" title="修改模拟器中的启动页面"></a>修改模拟器中的启动页面</h3>
+      <p>​    显然,通过页面跳转的方式预览第二个页面的显示效果是非常不便的,微信开发者提供了一个非常方便的功能,可以修改模拟器中的小程序启动页面,通过这个设置可以将小程序的首页临时修改为pages&#x2F;createVote&#x2F;createVote页面</p>
+<p>​    在工具栏中有一个编译模式的设置</p>
+<p>​    微信开发者工具默认使用的是”普通编译”,选择下拉菜单中的”添加编译模式”选项,打开编译模式设置窗口.设置窗口中,将启动页面选择为刚刚创建的第二个页面,并为这个模式起一个便于区分的名称,其他保持默认即可.</p>
+
+        <h3 id="使用form表单组件"   >
+          <a href="#使用form表单组件" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用form表单组件" class="headerlink" title="使用form表单组件"></a>使用form表单组件</h3>
+      <p>​    创建单选投票页面是一个表单页面,在这个页面中首先需要一个form表单组件作为所有表单组件的父元素.在createVote.wxml文件中加入form组件,代码如下:</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">bindsubmit</span>=<span class="string">&quot;formSubmit&quot;</span> <span class="attr">bindreset</span>=<span class="string">&quot;formReset&quot;</span>&gt;</span></span><br><span class="line">        &lt; !-- 这里添加表单组件 --&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>​    biansubmit 和 submitreset是form组件最常用的两个属性,从名字就能看出来它们的功能与bindtap属性类似.它们分别将表单提交(submit)事件和表单重置(reset)事件绑定(bind)到页面JS文件中的两个函数上,当小程序检测到表单提交事件或者表单重置事件时,就会分别调用这两个属性绑定的函数.</p>
+<p>​    显然,组件的单击事件只需要通过用户单击手机屏幕就能触发,而如果想要出发表单的提交事件或重置事件,则需要借助另外一个表单组件button,后面介绍button组件时会讲到出发这两个事件.</p>
+<p>​    由于现在表单内容还不完整,因此暂时先不在JS文件中实现表单提交和重置的事件处理函数.可以先在createVote.js文件中将两个函数申明出来,并创建一条注释,通过TODO关键字提醒自己以后记得处理相关内容.代码如下:</p>
+<figure class="highlight json"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Page(<span class="punctuation">&#123;</span></span><br><span class="line">    formSubmit()<span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// TODO 表单提交事件处理函数</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    formReset()<span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// TODO 表单重置事件处理函数</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="使用input输入框组件"   >
+          <a href="#使用input输入框组件" class="heading-link"><i class="fas fa-link"></i></a><a href="#使用input输入框组件" class="headerlink" title="使用input输入框组件"></a>使用input输入框组件</h3>
+      <p>​    现在form组件中不包含任何内容,因此这个页面的预览效果是空白的,本节就来在页面中增加一个input输入框组件.</p>
+<p>​    input组件拥有很多属性:</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类 型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>string</td>
+<td></td>
+<td>输入框的内容</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>text</td>
+<td>input的类型</td>
+</tr>
+<tr>
+<td>password</td>
+<td>boolean</td>
+<td>false</td>
+<td>是否是密码类型</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>string</td>
+<td></td>
+<td>输入框为空时的提示文字</td>
+</tr>
+<tr>
+<td>placeholder-class</td>
+<td>string</td>
+<td>input-placeholder</td>
+<td>指定placeholder的样式类</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>boolean</td>
+<td>false</td>
+<td>是否禁用输入框</td>
+</tr>
+<tr>
+<td>maxlength</td>
+<td>number</td>
+<td>140</td>
+<td>最大输入长度,如果设置为-1,则不限制长度</td>
+</tr>
+<tr>
+<td>focus</td>
+<td>boolean</td>
+<td>false</td>
+<td>进入表单页面时自动获得焦点</td>
+</tr>
+<tr>
+<td>bindinput</td>
+<td>eventhandle</td>
+<td></td>
+<td>键盘输入时触发事件处理函数</td>
+</tr>
+</tbody></table></div>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类 型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bindfocus</td>
+<td>eventhandle</td>
+<td></td>
+<td>输入框聚焦时触发的处理函数</td>
+</tr>
+<tr>
+<td>bindblur</td>
+<td>eventhandle</td>
+<td></td>
+<td>输入框失去焦点时出发的事件处理函数</td>
+</tr>
+<tr>
+<td>biandconfim</td>
+<td>eventhandle</td>
+<td></td>
+<td>单击输入法键盘上的完成按钮时出发的处理函数</td>
+</tr>
+</tbody></table></div>
+<p><strong>注:表中的属性不必考虑版本兼容性的问题,eventhandle类型实际上时string类型,这几个属性与bindtap类似,也是用于处理事件函数的,因此它们的value通常时JS文件中某个函数的名字</strong></p>
+<p>​    以上属性中,value属性可以设置为输入框的初始内容.如果value属性的值对应着页面的某个变量(如value&#x3D;”</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://zhazhazhi7.github.io">Zhazhazhi7</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%BA%8C-%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E6%8A%95%E7%A5%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F/">http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%BA%8C-%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E6%8A%95%E7%A5%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%B8%80-%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E6%9E%84%E6%88%90/"><span class="paginator-prev__text">微信小程序开发实例(一)——代码构成</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%8A%95%E7%A5%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A6%96%E9%A1%B5"><span class="toc-number">1.</span> <span class="toc-text">
+          开发投票程序的首页</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">
+          小程序的初始配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80"><span class="toc-number">1.2.</span> <span class="toc-text">
+          开发初始页面布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8image%E5%9B%BE%E7%89%87%E7%BB%84%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">
+          使用image图片组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8text%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">
+          使用text文本文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-number">2.</span> <span class="toc-text">
+          开发创建页面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%AC%AC%E4%BA%8C%E4%B8%AA%E9%A1%B5%E9%9D%A2"><span class="toc-number">2.1.</span> <span class="toc-text">
+          创建小程序的第二个页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%B8%AD%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%B5%E9%9D%A2"><span class="toc-number">2.1.1.</span> <span class="toc-text">
+          修改模拟器中的启动页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8form%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6"><span class="toc-number">2.1.2.</span> <span class="toc-text">
+          使用form表单组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8input%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84%E4%BB%B6"><span class="toc-number">2.1.3.</span> <span class="toc-text">
+          使用input输入框组件</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/guo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">zhazhazhi7's blog</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">22</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Zhazhazhi7</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.1.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

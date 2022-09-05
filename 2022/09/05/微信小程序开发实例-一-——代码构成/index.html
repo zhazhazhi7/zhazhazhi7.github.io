@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="微信小程序的代码构成       1、.json 后缀的JSON配置文件 2、.wxml 后缀的WXML配置文件 3、.wsxx 后缀的WXSS配置文件 4、.js 后缀的JS脚本文件                     JSON配置       项目根目录中有app.json和project.config.json，在pages&#x2F;logs目录下还有一个logs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发实例(一)——代码构成">
+<meta property="og:url" content="http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%B8%80-%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E6%9E%84%E6%88%90/index.html">
+<meta property="og:site_name" content="时光里山南水北，你我间人山人海。">
+<meta property="og:description" content="微信小程序的代码构成       1、.json 后缀的JSON配置文件 2、.wxml 后缀的WXML配置文件 3、.wsxx 后缀的WXSS配置文件 4、.js 后缀的JS脚本文件                     JSON配置       项目根目录中有app.json和project.config.json，在pages&#x2F;logs目录下还有一个logs">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-05T15:07:58.000Z">
+<meta property="article:modified_time" content="2022-09-05T15:36:31.551Z">
+<meta property="article:author" content="Zhazhazhi7">
+<meta name="twitter:card" content="summary"><title>微信小程序开发实例(一)——代码构成 | 时光里山南水北，你我间人山人海。</title><link ref="canonical" href="http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%B8%80-%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E6%9E%84%E6%88%90/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.1.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">时光里山南水北，你我间人山人海。</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">微信小程序开发实例(一)——代码构成</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-09-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-09-05</span></span></div></header><div class="post-body">
+        <h1 id="微信小程序的代码构成"   >
+          <a href="#微信小程序的代码构成" class="heading-link"><i class="fas fa-link"></i></a><a href="#微信小程序的代码构成" class="headerlink" title="微信小程序的代码构成"></a>微信小程序的代码构成</h1>
+      <p>1、.json 后缀的JSON配置文件</p>
+<p>2、.wxml 后缀的WXML配置文件</p>
+<p>3、.wsxx 后缀的WXSS配置文件</p>
+<p>4、.js 后缀的JS脚本文件</p>
+
+        <h2 id="JSON配置"   >
+          <a href="#JSON配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#JSON配置" class="headerlink" title="JSON配置"></a>JSON配置</h2>
+      <p>项目根目录中有app.json和project.config.json，在pages&#x2F;logs目录下还有一个logs.json</p>
+
+        <h3 id="小程序配置app-json"   >
+          <a href="#小程序配置app-json" class="heading-link"><i class="fas fa-link"></i></a><a href="#小程序配置app-json" class="headerlink" title="小程序配置app.json"></a>小程序配置app.json</h3>
+      <p>包括所有的页面路径和界面表现、网络超时时间、底部tab等。</p>
+<span id="more"></span>
+
+<p>解释：</p>
+<p>1、pages字段——用于描述页面路径</p>
+<p>2、window字段——定义小程序所有页面的顶部背景颜色、文字颜色定义等。</p>
+
+        <h3 id="工具配置project-config-json"   >
+          <a href="#工具配置project-config-json" class="heading-link"><i class="fas fa-link"></i></a><a href="#工具配置project-config-json" class="headerlink" title="工具配置project.config.json"></a>工具配置project.config.json</h3>
+      <p>通常大家在使用一个工具的时候，都会针对各自喜好做一些个性化配置，例如界面颜色、编译配置等等，当你换了另外一台电脑重新安装工具的时候，你还要重新配置。</p>
+<p>考虑到这点，小程序开发者工具在每个项目的根目录都会生成一个 <code>project.config.json</code>，你在工具上做的任何配置都会写入到这个文件，当你重新安装工具或者换电脑工作时，你只要载入同一个项目的代码包，开发者工具就自动会帮你恢复到当时你开发项目时的个性化配置，其中会包括编辑器的颜色、代码上传时自动压缩等等一系列选项。</p>
+
+        <h3 id="页面配置page-json"   >
+          <a href="#页面配置page-json" class="heading-link"><i class="fas fa-link"></i></a><a href="#页面配置page-json" class="headerlink" title="页面配置page.json"></a>页面配置page.json</h3>
+      <p>这里的 <code>page.json</code> 其实用来表示 pages&#x2F;logs 目录下的 <code>logs.json</code> 这类和小程序页面相关的配置。</p>
+<p>如果你整个小程序的风格是蓝色调，那么你可以在 <code>app.json</code> 里边声明顶部颜色是蓝色即可。实际情况可能不是这样，可能你小程序里边的每个页面都有不一样的色调来区分不同功能模块，因此我们提供了 <code>page.json</code>，让开发者可以独立定义每个页面的一些属性，例如刚刚说的顶部颜色、是否允许下拉刷新等等</p>
+
+        <h2 id="JSON语法"   >
+          <a href="#JSON语法" class="heading-link"><i class="fas fa-link"></i></a><a href="#JSON语法" class="headerlink" title="JSON语法"></a>JSON语法</h2>
+      <p>这里说一下小程序里 JSON 配置的一些注意事项。</p>
+<p>JSON文件都是被包裹在一个大括号中 {}，通过 key-value 的方式来表达数据。JSON的 Key 必须包裹在一个双引号中，在实践中，编写 JSON 的时候，忘了给 Key 值加双引号或者是把双引号写成单引号是常见错误。</p>
+<p>JSON的值只能是以下几种数据格式，其他任何格式都会触发报错，例如 JavaScript 中的 undefined。</p>
+<ol>
+<li>数字，包含浮点数和整数</li>
+<li>字符串，需要包裹在双引号中</li>
+<li>Bool值，true 或者 false</li>
+<li>数组，需要包裹在方括号中 []</li>
+<li>对象，需要包裹在大括号中 {}</li>
+<li>Null</li>
+</ol>
+<p>还需要注意的是 JSON 文件中无法使用注释，试图添加注释将会引发报错</p>
+
+        <h2 id="WXML模板"   >
+          <a href="#WXML模板" class="heading-link"><i class="fas fa-link"></i></a><a href="#WXML模板" class="headerlink" title="WXML模板"></a>WXML模板</h2>
+      <p>从事过网页编程的人知道，网页编程采用的是 HTML + CSS + JS 这样的组合，其中 <code>HTML</code> 是用来描述当前这个页面的结构，<code>CSS</code> 用来描述页面的样子，<code>JS</code> 通常是用来处理这个页面和用户的交互。</p>
+<p>同样道理，在小程序中也有同样的角色，其中 <code>WXML</code> 充当的就是类似 <code>HTML</code> 的角色。打开 <code>pages/index/index.wxml</code>，你会看到以下的内容:</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;userinfo&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">wx:if</span>=<span class="string">&quot;&#123;&#123;!hasUserInfo &amp;&amp; canIUse&#125;&#125;&quot;</span>&gt;</span> 获取头像昵称 <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:else</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">&quot;&#123;&#123;userInfo.avatarUrl&#125;&#125;&quot;</span> <span class="attr">background-size</span>=<span class="string">&quot;cover&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">&quot;userinfo-nickname&quot;</span>&gt;</span>&#123;&#123;userInfo.nickName&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;usermotto&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">&quot;user-motto&quot;</span>&gt;</span>&#123;&#123;motto&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>和 <code>HTML</code> 非常相似，<code>WXML</code> 由标签、属性等等构成。但是也有很多不一样的地方，我们来一一阐述一下：</p>
+<ol>
+<li><p>标签名字有点不一样</p>
+<p>往往写 HTML 的时候，经常会用到的标签是 <code>div</code>, <code>p</code>, <code>span</code>，开发者在写一个页面的时候可以根据这些基础的标签组合出不一样的组件，例如日历、弹窗等等。换个思路，既然大家都需要这些组件，为什么我们不能把这些常用的组件包装起来，大大提高我们的开发效率。</p>
+<p>从上边的例子可以看到，小程序的 <code>WXML</code> 用的标签是 <code>view</code>, <code>button</code>, <code>text</code> 等等，这些标签就是小程序给开发者包装好的基本能力，我们还提供了地图、视频、音频等等组件能力。</p>
+<p>更多详细的组件讲述参考下个章节 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/framework.html" >小程序的能力</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>多了一些 <code>wx:if</code> 这样的属性以及 { {  } } 这样的表达式</p>
+<p>在网页的一般开发流程中，我们通常会通过 <code>JS</code> 操作 <code>DOM</code> (对应 <code>HTML</code> 的描述产生的树)，以引起界面的一些变化响应用户的行为。例如，用户点击某个按钮的时候，<code>JS</code> 会记录一些状态到 <code>JS</code> 变量里边，同时通过 <code>DOM</code> API 操控 <code>DOM</code> 的属性或者行为，进而引起界面一些变化。当项目越来越大的时候，你的代码会充斥着非常多的界面交互逻辑和程序的各种状态变量，显然这不是一个很好的开发模式，因此就有了 MVVM 的开发模式（例如 React, Vue），提倡把渲染和逻辑分离。简单来说就是不要再让 <code>JS</code> 直接操控 <code>DOM</code>，<code>JS</code> 只需要管理状态即可，然后再通过一种模板语法来描述状态和界面结构的关系即可。</p>
+<p>小程序的框架也是用到了这个思路，如果你需要把一个 <code>Hello World</code> 的字符串显示在界面上。</p>
+<p>WXML 是这么写 :</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;msg&#125;\&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>JS 只需要管理状态即可:</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123; <span class="attr">msg</span>: <span class="string">&quot;Hello World&quot;</span> &#125;)</span><br></pre></td></tr></table></div></figure>
+
+<p>通过{ {  } } 的语法把一个变量绑定到界面上，我们称为数据绑定。仅仅通过数据绑定还不够完整的描述状态和界面的关系，还需要 <code>if</code>&#x2F;<code>else</code>, <code>for</code>等控制能力，在小程序里边，这些控制能力都用 <code>wx:</code> 开头的属性来表达。</p>
+</li>
+</ol>
+
+        <h2 id="WXSS-样式"   >
+          <a href="#WXSS-样式" class="heading-link"><i class="fas fa-link"></i></a><a href="#WXSS-样式" class="headerlink" title="WXSS 样式"></a>WXSS 样式</h2>
+      <p><code>WXSS</code> 具有 <code>CSS</code> 大部分的特性，小程序在 <code>WXSS</code> 也做了一些扩充和修改。</p>
+<ol>
+<li>新增了尺寸单位。在写 <code>CSS</code> 样式时，开发者需要考虑到手机设备的屏幕会有不同的宽度和设备像素比，采用一些技巧来换算一些像素单位。<code>WXSS</code> 在底层支持新的尺寸单位 <code>rpx</code> ，开发者可以免去换算的烦恼，只要交给小程序底层来换算即可，由于换算采用的浮点数运算，所以运算结果会和预期结果有一点点偏差。</li>
+<li>提供了全局的样式和局部样式。和前边 <code>app.json</code>, <code>page.json</code> 的概念相同，你可以写一个 <code>app.wxss</code> 作为全局样式，会作用于当前小程序的所有页面，局部页面样式 <code>page.wxss</code> 仅对当前页面生效。</li>
+<li>此外 <code>WXSS</code> 仅支持部分 <code>CSS</code> 选择器</li>
+</ol>
+
+        <h2 id="JS-逻辑交互"   >
+          <a href="#JS-逻辑交互" class="heading-link"><i class="fas fa-link"></i></a><a href="#JS-逻辑交互" class="headerlink" title="JS 逻辑交互"></a>JS 逻辑交互</h2>
+      <p>一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 <code>JS</code> 脚本文件来处理用户的操作。</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span>&#123;\&#123; msg &#125;\&#125;<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">bindtap</span>=<span class="string">&quot;clickMe&quot;</span>&gt;</span>点击我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>点击 <code>button</code> 按钮的时候，我们希望把界面上 <code>msg</code> 显示成 <code>&quot;Hello World&quot;</code>，于是我们在 <code>button</code> 上声明一个属性: <code>bindtap</code> ，在 JS 文件里边声明了 <code>clickMe</code> 方法来响应这次点击操作：</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">  <span class="attr">clickMe</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123; <span class="attr">msg</span>: <span class="string">&quot;Hello World&quot;</span> &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+
+<p>响应用户的操作就是这么简单，更详细的事件可以参考文档 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html" >WXML - 事件</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 。</p>
+<p>此外你还可以在 JS 中调用小程序提供的丰富的 API，利用这些 API 可以很方便的调起微信提供的能力，例如获取用户信息、本地存储、微信支付等。在前边的 QuickStart 例子中，在 <code>pages/index/index.js</code> 就调用了 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserInfo.html" >wx.getUserInfo</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 获取微信用户的头像和昵称，最后通过 <code>setData</code> 把获取到的信息显示到界面上。更多 API 可以参考文档 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html" >小程序的API</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 。</p>
+<p>通过这个章节，你了解了小程序涉及到的文件类型以及对应的角色，在<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/framework.html" >下个章节</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>中，我们把这一章所涉及到的文件通过 “小程序的框架” 给 “串” 起来，让他们都工作起来。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://zhazhazhi7.github.io">Zhazhazhi7</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%B8%80-%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E6%9E%84%E6%88%90/">http://zhazhazhi7.github.io/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%B8%80-%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E6%9E%84%E6%88%90/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/09/05/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%AE%9E%E4%BE%8B-%E4%BA%8C-%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E6%8A%95%E7%A5%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">微信小程序开发实例(二)——静态投票小程序</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/09/02/%E5%AD%97%E7%AC%A6%E4%B8%B2hash/"><span class="paginator-prev__text">字符串hash</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9E%84%E6%88%90"><span class="toc-number">1.</span> <span class="toc-text">
+          微信小程序的代码构成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">
+          JSON配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%85%8D%E7%BD%AEapp-json"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          小程序配置app.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AEproject-config-json"><span class="toc-number">1.1.2.</span> <span class="toc-text">
+          工具配置project.config.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AEpage-json"><span class="toc-number">1.1.3.</span> <span class="toc-text">
+          页面配置page.json</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON%E8%AF%AD%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">
+          JSON语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WXML%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.3.</span> <span class="toc-text">
+          WXML模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WXSS-%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.4.</span> <span class="toc-text">
+          WXSS 样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-%E9%80%BB%E8%BE%91%E4%BA%A4%E4%BA%92"><span class="toc-number">1.5.</span> <span class="toc-text">
+          JS 逻辑交互</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/guo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">zhazhazhi7's blog</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">22</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Zhazhazhi7</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.1.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
