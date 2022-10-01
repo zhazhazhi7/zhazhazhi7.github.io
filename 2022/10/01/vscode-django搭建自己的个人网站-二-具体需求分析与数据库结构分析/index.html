@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="vscode+django 搭建自己的个人网站（二）        ——具体的需求分析与数据库结构分析                           前言       ​    搭建一个网站需要先对网站的结构进行分析，一遍我们对后面的页面关系创建和数据库关系的创建进行更清晰的分析。 ​    首先我们先对我们博客网站的需求进行分析。blog的功能比较简单，主要以个人的文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode+django搭建自己的个人网站(二)---具体需求分析与数据库结构分析">
+<meta property="og:url" content="http://zhazhazhi7.github.io/2022/10/01/vscode-django%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-%E4%BA%8C-%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="时光里山南水北，你我间人山人海。">
+<meta property="og:description" content="vscode+django 搭建自己的个人网站（二）        ——具体的需求分析与数据库结构分析                           前言       ​    搭建一个网站需要先对网站的结构进行分析，一遍我们对后面的页面关系创建和数据库关系的创建进行更清晰的分析。 ​    首先我们先对我们博客网站的需求进行分析。blog的功能比较简单，主要以个人的文">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-01T14:18:50.000Z">
+<meta property="article:modified_time" content="2022-10-01T14:22:20.573Z">
+<meta property="article:author" content="Zhazhazhi7">
+<meta name="twitter:card" content="summary"><title>vscode+django搭建自己的个人网站(二)---具体需求分析与数据库结构分析 | 时光里山南水北，你我间人山人海。</title><link ref="canonical" href="http://zhazhazhi7.github.io/2022/10/01/vscode-django%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-%E4%BA%8C-%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.1.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">时光里山南水北，你我间人山人海。</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">vscode+django搭建自己的个人网站(二)---具体需求分析与数据库结构分析</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-10-01</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-10-01</span></span></div></header><div class="post-body">
+        <h1 id="vscode-django-搭建自己的个人网站（二）-——具体的需求分析与数据库结构分析"   >
+          <a href="#vscode-django-搭建自己的个人网站（二）-——具体的需求分析与数据库结构分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#vscode-django-搭建自己的个人网站（二）-——具体的需求分析与数据库结构分析" class="headerlink" title="vscode+django 搭建自己的个人网站（二）        ——具体的需求分析与数据库结构分析"></a>vscode+django 搭建自己的个人网站（二）        ——具体的需求分析与数据库结构分析</h1>
+      
+        <h2 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+      <p>​    搭建一个网站需要先对网站的结构进行分析，一遍我们对后面的页面关系创建和数据库关系的创建进行更清晰的分析。</p>
+<p>​    首先我们先对我们博客网站的需求进行分析。blog的功能比较简单，主要以个人的文章为主。</p>
+
+        <h2 id="需求分析"   >
+          <a href="#需求分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2>
+      <p>从<strong>功能需求</strong>来看，这个blog的功能有：网站首页、文章分类、文章内容、幻灯图片、文章推荐、文章排行、热门推荐、文章搜索、友情链接。</p>
+<p>·<strong>网站首页</strong>：网站首页是整个网站的主页面，也是网站的入口界面，里面主要是展示blog的动态信息以及blog的功能导航。网站动态信息主要以文章为主，如新文章、幻灯图片、推荐阅读、文章排行、热门推荐、友情链接等。导航栏主要是将文章的分类的链接展示在首页，方便用户浏览。</p>
+<span id="more"></span>
+
+<p>·<strong>文章分类</strong>：主要展示文章分类信息以及链接，方便用户按需要查看。文章分类可以在文章的后台删除。</p>
+<p>·<strong>文章内容</strong>：主要展示文章索树分类、文章索树标签、文章内容、作者信息、发布的时间信息。可以通过后台增、删改等操作。</p>
+<p>·<strong>幻灯图片</strong>：在网站首页，通过图片和文字展示一些重要信息，可以通过后台添加图片、图片描述、图片链接。</p>
+<p>·<strong>文章推荐</strong>：推荐一些重要的文章，可以在后台推荐</p>
+<p>·<strong>文章排行</strong>：可以根据文章浏览数，按时间段进行查询，然后展示出来。具体还可以根据自己的需求更改。</p>
+<p>·<strong>热门推荐</strong>：与文章排行文章推荐相同</p>
+<p>·<strong>文章搜索</strong>，通过关键词搜索文章</p>
+<p>·<strong>友情链接</strong>：展示相互链接的网站的名称与链接，可以通过后台增加或者删除</p>
+<p>·<strong>单页面</strong>：展示网站介绍，作者的联系方式等信息，此类信息不经常变动，可以通过后台实现更改，也可以通过模板实现更改</p>
+<p>了解需求之后，就由UI设计师根据网站需求来设计网站页面，然后由前端工程师根据设计好的页面进行切图，实现HTML静态页面，最后由后端根据HTML页面和需求实现数据库构建和网站后台开发，不过自己的博客当然需要自己全部来设计完成。</p>
+<p>从<strong>设计的方面</strong>来看，blog主要分为六个页面：网站首页、文章分类列表页、文章内容页、搜索列表页、标签列表页、单页面</p>
+
+        <h2 id="数据库设计分析"   >
+          <a href="#数据库设计分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#数据库设计分析" class="headerlink" title="数据库设计分析"></a>数据库设计分析</h2>
+      <p>​    从网站需求分析及网站功能、页面设计可以知道，我们的Blog主要以文章内容为主。所以我们在设计数据库的时候，我们主要以文章信息为核心数据，然后逐步向外扩展相关联的数据信息。</p>
+<p>​    这其中，<strong>文章与分类</strong>的关系是一对多的关系，什么是一对多？就是一篇文章只能有一个分类，而一个分类里可以有多篇文章。<strong>文章与标签</strong>的关系是多对多的关系，多对多简单理解就是，一篇文章可以有多个标签，一个标签里同样可以有多篇文章</p>
+<p>​    首先，我们先分析我们想要的文章页面内包含哪些信息，将文章的表命名为Article，通过前面的分析列出下面的表：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>表字段</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INTEGER类型，长度为11</td>
+<td>主键，有系统自动生成</td>
+</tr>
+<tr>
+<td>title</td>
+<td>VARCHAR类型，长度为100</td>
+<td>文章标题</td>
+</tr>
+<tr>
+<td>category</td>
+<td>FOREIGNKEY</td>
+<td>外键，关联文章分类表</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>MANYTOMANYFIELD</td>
+<td>多对多，关联标签列表</td>
+</tr>
+<tr>
+<td>body</td>
+<td>TEXTFIELD</td>
+<td>文章内容</td>
+</tr>
+<tr>
+<td>user</td>
+<td>FOREIGNKEY</td>
+<td>外键，文章作者关联用户模型，系统自带</td>
+</tr>
+<tr>
+<td>views</td>
+<td>POSTIVEINTEGERFIELD</td>
+<td>文章浏览数，正的整数，不能为负</td>
+</tr>
+<tr>
+<td>tui</td>
+<td>FOREGNKEY</td>
+<td>外键，关联推荐位表</td>
+</tr>
+<tr>
+<td>creates_time</td>
+<td>DATETIMEFIELD</td>
+<td>文章发布时间</td>
+</tr>
+</tbody></table></div>
+<p>文章关联了一个分类表，将这个表命名为category,category表的结构如下：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>表字段</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INTEGER类型，长度为11</td>
+<td>主键，表示文章，由系统自动生成</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR类型，长度为30</td>
+<td>分类名</td>
+</tr>
+</tbody></table></div>
+<p>文章关联了一个标签表，命名这个表为tag，这个表的结构如下：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>表字段</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INTEGER类型，长度为11</td>
+<td>主键，由系统自动生成</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR类型，长度为30</td>
+<td>文章的标签名</td>
+</tr>
+</tbody></table></div>
+<p>文章关联推荐位表，这里命名为tui，这个表的结构如下：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>表字段</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INTEGER类型，长度为11</td>
+<td>主键，由系统自动生成</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR类型，长度为30</td>
+<td>标签名</td>
+</tr>
+</tbody></table></div>
+<p>除了文章以外，我们还需要两个与之前没有关联的表，第一个是幻灯片图表，命名为banner，数据库结构如下：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>表字段</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INTEGER类型，字长11</td>
+<td>主键，由系统自动生成</td>
+</tr>
+<tr>
+<td>text_info</td>
+<td>VARCHAR类型，字长100</td>
+<td>标题，存储图片信息</td>
+</tr>
+<tr>
+<td>img</td>
+<td>IMAGE类型</td>
+<td>图片类型，保存传图片的类型</td>
+</tr>
+<tr>
+<td>link_url</td>
+<td>URLFIELD类型</td>
+<td>图片链接的URL</td>
+</tr>
+<tr>
+<td>is_active</td>
+<td>BOOLEANFIELD</td>
+<td>有TRUE和FALSE两个类型，意思为是否激活</td>
+</tr>
+</tbody></table></div>
+<p>第二个为友情链接表，命名为link，结构如下：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>表字段</th>
+<th>字段类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INTEGER类型</td>
+<td>主键,由系统自动生成</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR类型,长度为70</td>
+<td>友情链接的名称</td>
+</tr>
+<tr>
+<td>linkurl</td>
+<td>URLFIELD类型</td>
+<td>友情链接的URL</td>
+</tr>
+</tbody></table></div>
+<p>目前,需要的数据库大概已经完全了解了,但是DJANGO自带了SQLLITE3数据库,可是笔者觉得目前更适合MYSQL数据库使用,所以在了解了配置文件的使用后决定更换数据库</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://zhazhazhi7.github.io">Zhazhazhi7</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://zhazhazhi7.github.io/2022/10/01/vscode-django%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-%E4%BA%8C-%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/">http://zhazhazhi7.github.io/2022/10/01/vscode-django%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-%E4%BA%8C-%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/10/01/vscode-django%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-%E4%B8%89-%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">vscode+django搭建自己的个人网站(三)---创建应用以及基础配置</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/10/01/vscode-django%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99-%E4%B8%80-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE/"><span class="paginator-prev__text">vscode+django搭建自己的个人网站(一)---环境搭建与配置</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vscode-django-%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%EF%BC%88%E4%BA%8C%EF%BC%89-%E2%80%94%E2%80%94%E5%85%B7%E4%BD%93%E7%9A%84%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">
+          vscode+django 搭建自己的个人网站（二）        ——具体的需求分析与数据库结构分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">
+          需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">
+          数据库设计分析</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/guo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">zhazhazhi7's blog</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">27</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Zhazhazhi7</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.1.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
